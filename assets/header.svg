@@ -1,0 +1,103 @@
+<svg width="820" height="260" viewBox="0 0 820 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .font-cond { font-family: 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif; }
+      .font-mono { font-family: 'Courier New', Courier, monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="260" fill="#0A0A0A"/>
+
+  <!-- Outer border -->
+  <rect x="0.5" y="0.5" width="819" height="259" fill="none" stroke="#2A2A2A" stroke-width="1"/>
+
+  <!-- ── REGISTRATION MARKS ── -->
+  <text x="10" y="11" class="font-mono" font-size="8" fill="#333" letter-spacing="1">+ A1</text>
+  <text x="810" y="11" class="font-mono" font-size="8" fill="#333" letter-spacing="1" text-anchor="end">B1 +</text>
+  <text x="10" y="254" class="font-mono" font-size="8" fill="#333" letter-spacing="1">+ A2</text>
+  <text x="810" y="254" class="font-mono" font-size="8" fill="#333" letter-spacing="1" text-anchor="end">B2 +</text>
+
+  <!-- ── HEADER STRIP ── -->
+  <line x1="0" y1="32" x2="820" y2="32" stroke="#2A2A2A" stroke-width="1"/>
+
+  <!-- Header labels -->
+  <rect x="16" y="10" width="92" height="14" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="22" y="20.5" class="font-cond" font-size="8" fill="#555" letter-spacing="1.5" font-weight="600">DESIGN SYSTEM</text>
+
+  <rect x="116" y="10" width="36" height="14" fill="none" stroke="#0033FF" stroke-width="1"/>
+  <text x="122" y="20.5" class="font-cond" font-size="8" fill="#0033FF" letter-spacing="1.5" font-weight="600">SKILL</text>
+
+  <rect x="160" y="10" width="40" height="14" fill="#FAFAFA" stroke="#FAFAFA" stroke-width="1"/>
+  <text x="166" y="20.5" class="font-cond" font-size="8" fill="#0A0A0A" letter-spacing="1.5" font-weight="700">v1.0.0</text>
+
+  <!-- Header right: ref code -->
+  <text x="804" y="20" class="font-mono" font-size="7.5" fill="#444" letter-spacing="0.5" text-anchor="end">REF/MIC-SKL-001 · REV.A · 2026</text>
+
+  <!-- ── MAIN ZONE ── -->
+
+  <!-- Big display: MICROGRAPHIC -->
+  <text x="16" y="103" class="font-cond" font-size="72" font-weight="300" fill="#FAFAFA" letter-spacing="6">MICROGRAPHIC</text>
+
+  <!-- Sub-rule under MICROGRAPHIC -->
+  <line x1="16" y1="113" x2="500" y2="113" stroke="#2A2A2A" stroke-width="1"/>
+
+  <!-- Sub-label -->
+  <text x="16" y="130" class="font-cond" font-size="11" font-weight="600" fill="#555" letter-spacing="3">UI DESIGN SYSTEM FOR AI CODING AGENTS</text>
+
+  <!-- Vertical divider -->
+  <line x1="540" y1="36" x2="540" y2="182" stroke="#2A2A2A" stroke-width="1"/>
+
+  <!-- Right column content -->
+  <text x="556" y="56" class="font-cond" font-size="9" fill="#444" letter-spacing="2" font-weight="600">DESCRIPTION</text>
+  <line x1="556" y1="60" x2="804" y2="60" stroke="#2A2A2A" stroke-width="1"/>
+  <text x="556" y="76" class="font-cond" font-size="11.5" fill="#888">Dense, technical, schematic UI design.</text>
+  <text x="556" y="93" class="font-cond" font-size="11.5" fill="#888">Inspired by industrial product labels,</text>
+  <text x="556" y="110" class="font-cond" font-size="11.5" fill="#888">hardware spec sheets, and Swiss</text>
+  <text x="556" y="127" class="font-cond" font-size="11.5" fill="#888">modernist typography systems.</text>
+
+  <line x1="556" y1="138" x2="804" y2="138" stroke="#1A1A1A" stroke-width="1"/>
+  <text x="556" y="152" class="font-cond" font-size="9" fill="#444" letter-spacing="2" font-weight="600">REFERENCES</text>
+  <text x="556" y="167" class="font-cond" font-size="10.5" fill="#444">Maison Margiela · Off-White · Wim Crouwel</text>
+  <text x="556" y="181" class="font-cond" font-size="10.5" fill="#444">Müller-Brockmann · Daily Dialogue Studio</text>
+
+  <!-- ── SERIAL RULE ── -->
+  <line x1="0" y1="182" x2="820" y2="182" stroke="#2A2A2A" stroke-width="1"/>
+  <text x="16" y="192" class="font-mono" font-size="7" fill="#2A2A2A" letter-spacing="2">0000 · 0001 · 0002 · 0003 · 0004 · 0005 · 0006 · 0007 · 0008 · 0009 · 0010 · 0011 · 0012 · 0013 · 0014 · 0015 · 0016 · 0017 · 0018 · 0019</text>
+  <line x1="0" y1="198" x2="820" y2="198" stroke="#2A2A2A" stroke-width="1"/>
+
+  <!-- ── AGENT TAGS STRIP ── -->
+  <!-- CURSOR -->
+  <rect x="16" y="209" width="54" height="16" fill="none" stroke="#444" stroke-width="1"/>
+  <text x="43" y="220" class="font-cond" font-size="8" fill="#888" letter-spacing="1.5" font-weight="600" text-anchor="middle">CURSOR</text>
+
+  <!-- CLAUDE CODE -->
+  <rect x="78" y="209" width="78" height="16" fill="none" stroke="#444" stroke-width="1"/>
+  <text x="117" y="220" class="font-cond" font-size="8" fill="#888" letter-spacing="1.5" font-weight="600" text-anchor="middle">CLAUDE CODE</text>
+
+  <!-- CODEX -->
+  <rect x="164" y="209" width="46" height="16" fill="none" stroke="#444" stroke-width="1"/>
+  <text x="187" y="220" class="font-cond" font-size="8" fill="#888" letter-spacing="1.5" font-weight="600" text-anchor="middle">CODEX</text>
+
+  <!-- WINDSURF -->
+  <rect x="218" y="209" width="60" height="16" fill="none" stroke="#444" stroke-width="1"/>
+  <text x="248" y="220" class="font-cond" font-size="8" fill="#888" letter-spacing="1.5" font-weight="600" text-anchor="middle">WINDSURF</text>
+
+  <!-- GEMINI CLI -->
+  <rect x="286" y="209" width="68" height="16" fill="none" stroke="#444" stroke-width="1"/>
+  <text x="320" y="220" class="font-cond" font-size="8" fill="#888" letter-spacing="1.5" font-weight="600" text-anchor="middle">GEMINI CLI</text>
+
+  <!-- MIT badge -->
+  <rect x="754" y="209" width="50" height="16" fill="#FAFAFA" stroke="#FAFAFA" stroke-width="1"/>
+  <text x="779" y="220" class="font-cond" font-size="8" fill="#0A0A0A" letter-spacing="1.5" font-weight="700" text-anchor="middle">MIT</text>
+
+  <!-- ── FOOTER ── -->
+  <line x1="0" y1="234" x2="820" y2="234" stroke="#2A2A2A" stroke-width="1"/>
+  <text x="16" y="248" class="font-mono" font-size="8" fill="#444" letter-spacing="0.5">npx micrographic-skill</text>
+
+  <!-- Crosshair center decoration -->
+  <line x1="409" y1="240" x2="411" y2="240" stroke="#333" stroke-width="1"/>
+  <line x1="410" y1="239" x2="410" y2="241" stroke="#333" stroke-width="1"/>
+
+  <text x="804" y="248" class="font-mono" font-size="8" fill="#444" letter-spacing="0.5" text-anchor="end">SKU/MIC-SKILL-001 · v1.0.0 · OPEN SOURCE</text>
+</svg>

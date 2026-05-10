@@ -1,0 +1,19 @@
+{
+  "name": "micrographic-skill",
+  "version": "1.0.0",
+  "description": "Micrographic UI design skill for AI coding agents — Cursor, Claude Code, Codex, and more.",
+  "keywords": ["skill", "design", "micrographic", "cursor", "claude", "ai-agent", "ui", "css"],
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "micrographic-skill": "./bin/install.mjs"
+  },
+  "files": [
+    "bin/",
+    "SKILL.md",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
