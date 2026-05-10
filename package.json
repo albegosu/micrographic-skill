@@ -1,6 +1,6 @@
 {
   "name": "micrographic-skill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Micrographic UI design skill for AI coding agents — Cursor, Claude Code, Codex, and more.",
   "keywords": ["skill", "design", "micrographic", "cursor", "claude", "ai-agent", "ui", "css"],
   "license": "MIT",
@@ -14,6 +14,11 @@
     "url": "https://github.com/albegosu/micrographic-skill/issues"
   },
   "type": "module",
+  "scripts": {
+    "release:patch": "npm version patch -m 'chore(release): %s'",
+    "release:minor": "npm version minor -m 'chore(release): %s'",
+    "release:major": "npm version major -m 'chore(release): %s'"
+  },
   "bin": {
     "micrographic-skill": "./bin/install.mjs"
   },

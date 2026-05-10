@@ -130,6 +130,18 @@ The micrographic aesthetic has deep roots — from Swiss Modernism to contempora
 
 ---
 
+## Releases
+
+Every [npm](https://www.npmjs.com/package/micrographic-skill) version has a matching Git tag `vMAJOR.MINOR.PATCH` on this repository.
+
+```bash
+npm run release:patch   # or release:minor / release:major — bumps version, commits, creates tag v…
+git push --follow-tags origin main
+npm publish           # add --otp=… if you use 2FA
+```
+
+---
+
 ## Contributing
 
 PRs welcome. If you improve the SKILL.md — better component patterns, new layout systems, accessibility improvements — open a pull request.
