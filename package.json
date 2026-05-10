@@ -4,6 +4,15 @@
   "description": "Micrographic UI design skill for AI coding agents — Cursor, Claude Code, Codex, and more.",
   "keywords": ["skill", "design", "micrographic", "cursor", "claude", "ai-agent", "ui", "css"],
   "license": "MIT",
+  "author": "Alberto González <alberto@resiz.es>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albegosu/micrographic-skill.git"
+  },
+  "homepage": "https://github.com/albegosu/micrographic-skill#readme",
+  "bugs": {
+    "url": "https://github.com/albegosu/micrographic-skill/issues"
+  },
   "type": "module",
   "bin": {
     "micrographic-skill": "./bin/install.mjs"
@@ -11,7 +20,9 @@
   "files": [
     "bin/",
     "SKILL.md",
-    "README.md"
+    "README.md",
+    "LICENSE",
+    "assets/"
   ],
   "engines": {
     "node": ">=18"
