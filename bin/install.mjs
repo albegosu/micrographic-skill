@@ -2,10 +2,11 @@
 import { existsSync, mkdirSync, copyFileSync, readFileSync } from 'fs'
 import { join, resolve } from 'path'
 import { fileURLToPath } from 'url'
-import { createInterface } from 'readline'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
-const SKILL_SRC = resolve(__dirname, '..', 'SKILL.md')
+const ROOT = resolve(__dirname, '..')
+const SKILL_SRC = join(ROOT, 'SKILL.md')
+const PKG = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'))
 const CWD = process.cwd()
 
 // ANSI colors
@@ -112,7 +113,7 @@ async function main() {
 
   if (flags.help) { printHelp(); process.exit(0) }
 
-  log(`\n${c.bold}  micrographic-skill${c.reset}  ${c.dim}v1.0.0${c.reset}`)
+  log(`\n${c.bold}  micrographic-skill${c.reset}  ${c.dim}v${PKG.version}${c.reset}`)
   log(`  ${c.dim}Micrographic UI design system for AI coding agents${c.reset}\n`)
 
   // Build install list

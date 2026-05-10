@@ -8,7 +8,7 @@
 
 [![npm](https://img.shields.io/npm/v/micrographic-skill?color=0A0A0A&labelColor=0A0A0A&logo=npm&logoColor=FAFAFA)](https://www.npmjs.com/package/micrographic-skill)
 [![license](https://img.shields.io/badge/license-MIT-0A0A0A?labelColor=0A0A0A)](./LICENSE)
-[![agents](https://img.shields.io/badge/agents-Cursor·Claude·Codex·Windsurf-0033FF?labelColor=0A0A0A)](https://github.com/yourusername/micrographic-skill)
+[![agents](https://img.shields.io/badge/agents-Cursor·Claude·Codex·Windsurf-0033FF?labelColor=0A0A0A)](https://github.com/albegosu/micrographic-skill)
 
 </div>
 
@@ -144,13 +144,13 @@ npm publish           # add --otp=… if you use 2FA
 
 ## Contributing
 
-PRs welcome. If you improve the SKILL.md — better component patterns, new layout systems, accessibility improvements — open a pull request.
+Pull requests are welcome. Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for language expectations (English), branch workflow, and a short checklist.
 
 ```bash
-git clone https://github.com/yourusername/micrographic-skill
+git clone https://github.com/albegosu/micrographic-skill.git
 cd micrographic-skill
 # edit SKILL.md
-# test by installing locally: node bin/install.mjs --cursor
+# test locally: node bin/install.mjs --dry-run && node bin/install.mjs --cursor
 ```
 
 ---
