@@ -32,7 +32,7 @@
     "release:major": "npm version major -m 'chore(release): %s'"
   },
   "bin": {
-    "micrographic-skill": "./bin/install.mjs"
+    "micrographic-skill": "bin/install.mjs"
   },
   "files": [
     "bin/",
