@@ -1,0 +1,54 @@
+{
+  "canvas": "#f4f2ee",
+  "ref": "REF/MIC-SKL-001",
+  "rev": "REV.B",
+  "sku": "SKU/MIC-SKILL-001",
+  "tagline": "DENSE · TECHNICAL · SCHEMATIC UI FOR AI AGENTS",
+  "display": {
+    "lines": ["MICRO", "GRAPHIC", "SKILL"],
+    "plus": true
+  },
+  "npx": "npx micrographic-skill",
+  "annotation": "820×300 · 72DPI · GRID 4PX · OPEN SOURCE",
+  "posterChips": ["NPM", "MIT", "ESM"],
+  "footerChips": ["PUBLISHED", "OPEN SOURCE", "AGENT SKILL", "DESIGN SYSTEM"],
+  "agents": [
+    { "name": "CURSOR", "path": "skills+rules .cursor/" },
+    { "name": "CLAUDE", "path": ".claude/" },
+    { "name": "CODEX", "path": ".codex/" },
+    { "name": "WINDSURF", "path": ".windsurf/" },
+    { "name": "GEMINI", "path": ".gemini/" }
+  ],
+  "cycles": {
+    "principles": [
+      "COMPRESSION NOT MINIMALISM",
+      "METADATA AS TEXTURE",
+      "SCALE BRUTALISM · 80PX / 7PX",
+      "ORDERED CHAOS · GRID-LOCKED",
+      "TWO SCALES ONLY · NO MID ZONE"
+    ],
+    "triggers": [
+      "SPEC SHEET STYLE",
+      "TECHNICAL GRID",
+      "BLUEPRINT UI",
+      "INDUSTRIAL AESTHETIC",
+      "DENSE INFORMATION UI",
+      "SCHEMATIC INTERFACE"
+    ],
+    "components": [
+      "SpecCard · DataPanel · DisplayHero",
+      "MetricGrid · MetaStrip · Chip",
+      "TexturePanel · PosterView · FormView"
+    ]
+  },
+  "references": [
+    "Maison Margiela · Off-White · Wim Crouwel",
+    "Müller-Brockmann · Daily Dialogue Studio"
+  ],
+  "tokens": [
+    { "label": "MICRO", "value": "7px" },
+    { "label": "DISPLAY", "value": "auto" },
+    { "label": "ACCENT", "value": "#CC2200" },
+    { "label": "GRID", "value": "4px" }
+  ]
+}

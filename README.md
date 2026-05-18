@@ -76,7 +76,7 @@ The skill encodes a complete design system — your agent follows it to generate
 | `--text-xs` | `10px` | Tags, meta labels |
 | `--text-xl` | `32px` | Display numerals |
 | `--text-2xl` | `56px` | Hero figures |
-| `--color-accent` | `#0033FF` | One hit per screen |
+| `--color-accent` | `#CC2200` (signal orange; `#0033FF` HUD variant) | One hit per screen |
 | `--border` | `1px solid #D4D4D4` | Zone skeleton |
 | `--border-dark` | `1px solid #2A2A2A` | Component boundary |
 | `border-radius` | `0–2px` | Angular only |

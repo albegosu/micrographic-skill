@@ -1,8 +1,17 @@
 {
   "name": "micrographic-skill",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Micrographic UI design skill for AI coding agents — Cursor, Claude Code, Codex, and more.",
-  "keywords": ["skill", "design", "micrographic", "cursor", "claude", "ai-agent", "ui", "css"],
+  "keywords": [
+    "skill",
+    "design",
+    "micrographic",
+    "cursor",
+    "claude",
+    "ai-agent",
+    "ui",
+    "css"
+  ],
   "license": "MIT",
   "author": "Alberto González <alberto@resiz.es>",
   "repository": {
@@ -15,6 +24,9 @@
   },
   "type": "module",
   "scripts": {
+    "build:header": "node scripts/build-header.mjs",
+    "prepack": "npm run build:header",
+    "screenshot:eval": "node scripts/screenshot-eval.mjs",
     "release:patch": "npm version patch -m 'chore(release): %s'",
     "release:minor": "npm version minor -m 'chore(release): %s'",
     "release:major": "npm version major -m 'chore(release): %s'"
@@ -24,12 +36,18 @@
   },
   "files": [
     "bin/",
+    "rules/",
     "SKILL.md",
+    "EVAL.md",
     "README.md",
     "LICENSE",
-    "assets/"
+    "assets/header.svg",
+    "assets/header-data.json"
   ],
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
   }
 }

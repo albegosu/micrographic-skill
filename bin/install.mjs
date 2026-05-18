@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url'
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const ROOT = resolve(__dirname, '..')
 const SKILL_SRC = join(ROOT, 'SKILL.md')
+const RULES_SRC = join(ROOT, 'rules', 'micrographic.mdc')
 const PKG = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'))
 const CWD = process.cwd()
 
@@ -65,11 +66,19 @@ const TARGETS = [
     filename: 'SKILL.md',
     detect:   () => existsSync(join(CWD, '.windsurf')),
   },
+  {
+    id:       'gemini',
+    label:    'Gemini CLI  (.gemini/skills/micrographic/)',
+    dir:      join(CWD, '.gemini', 'skills', 'micrographic'),
+    filename: 'SKILL.md',
+    detect:   () => existsSync(join(CWD, '.gemini')),
+  },
 ]
 
 function installTo(target) {
   mkdirSync(target.dir, { recursive: true })
-  copyFileSync(SKILL_SRC, join(target.dir, target.filename))
+  const src = target.id === 'cursor-rules' ? RULES_SRC : SKILL_SRC
+  copyFileSync(src, join(target.dir, target.filename))
   ok(target.label)
 }
 
@@ -99,7 +108,7 @@ ${c.dim}────────────────────────
     npx micrographic-skill --dry-run Show what would be installed
 
   ${c.bold}Supported agents${c.reset}
-    Cursor · Claude Code · Codex · Windsurf
+    Cursor · Claude Code · Codex · Windsurf · Gemini CLI
 
   ${c.bold}After installing${c.reset}
     Ask your agent to build a "micrographic" UI, or mention
@@ -112,6 +121,15 @@ async function main() {
   const flags = parseFlags()
 
   if (flags.help) { printHelp(); process.exit(0) }
+
+  if (!existsSync(SKILL_SRC)) {
+    console.error('\n  Error: SKILL.md not found in package.\n')
+    process.exit(1)
+  }
+  if (flags.rules && !existsSync(RULES_SRC)) {
+    console.error('\n  Error: rules/micrographic.mdc not found in package.\n')
+    process.exit(1)
+  }
 
   log(`\n${c.bold}  micrographic-skill${c.reset}  ${c.dim}v${PKG.version}${c.reset}`)
   log(`  ${c.dim}Micrographic UI design system for AI coding agents${c.reset}\n`)
