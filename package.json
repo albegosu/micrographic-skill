@@ -27,7 +27,10 @@
   "type": "module",
   "scripts": {
     "build:header": "node scripts/build-header.mjs",
-    "prepack": "npm run build:header",
+    "check:design": "node scripts/check-design-md.mjs",
+    "lint:design": "designmd lint DESIGN.md",
+    "test": "npm run check:design",
+    "prepack": "npm run build:header && npm run check:design",
     "screenshot:eval": "node scripts/screenshot-eval.mjs",
     "release:patch": "npm version patch -m 'chore(release): %s'",
     "release:minor": "npm version minor -m 'chore(release): %s'",
@@ -51,6 +54,8 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "playwright": "^1.60.0"
+    "@google/design.md": "^0.4.0",
+    "playwright": "^1.60.0",
+    "yaml": "^2.9.1"
   }
 }
