@@ -1,10 +1,12 @@
 {
   "name": "micrographic-skill",
   "version": "1.1.0",
-  "description": "Micrographic UI design skill for AI coding agents — Cursor, Claude Code, Codex, and more.",
+  "description": "Micrographic UI design skill for AI coding agents — Cursor, Claude Code, Codex, and more. Also ships as a DESIGN.md.",
   "keywords": [
     "skill",
     "design",
+    "design-md",
+    "design-tokens",
     "micrographic",
     "cursor",
     "claude",
@@ -38,6 +40,7 @@
     "bin/",
     "rules/",
     "SKILL.md",
+    "DESIGN.md",
     "EVAL.md",
     "README.md",
     "LICENSE",
