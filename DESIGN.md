@@ -14,7 +14,7 @@ colors:
   bg: "#F4F2EE"
   ink: "#0A0A0A"
   dark: "#1A1A1A"
-  mid: "#888888"
+  mid: "#6B6B6B"
   muted: "#AAAAAA"
   faint: "#BBBBBB"
   border: "#C8C4BE"
@@ -235,12 +235,12 @@ Near-monochrome. The constraint is the aesthetic. Tokens describe **light mode**
 | `bg` | `#F4F2EE` | `#0A0A0A` | Ground. Warm label paper in light mode, never pure `#FFFFFF`. |
 | `ink` | `#0A0A0A` | `#1A1A1A` | Light: display, primary text, filled chips. Dark: hatching only. |
 | `dark` | `#1A1A1A` | `#2A2A2A` | Strong label text, component boundaries, rules. Dark: borders and brackets. |
-| `mid` | `#888888` | `#555555` | Field labels, inactive chip and nav text. |
+| `mid` | `#6B6B6B` | `#555555` | Field labels, inactive chip and nav text. |
 | `muted` | `#AAAAAA` | `#888888` | Dimension labels, unit suffixes, table headers. |
 | `faint` | `#BBBBBB` | `#3A3A3A` | REF/SKU codes, serial strips, MetaBar, registration marks. |
 | `border` | `#C8C4BE` | — | Every hairline zone border, bracket and separator. |
-| `hatch` | `#E4E0DA` | — | Diagonal hatching stripes in passive zones. |
-| `white` | — | `#FAFAFA` | Text on ink or accent fills, input wells. Dark: display and primary text. |
+| `hatch` | `#E4E0DA` | `#1A1A1A` | Diagonal hatching stripes in passive zones, table row hover. |
+| `white` | `#FAFAFA` | `#FAFAFA` | Text on ink or accent fills, input wells. Dark: display and primary text. |
 | `accent` | `#CC2200` | `#FF8C00` | The single signal: signal red (light) or safety orange (dark). |
 
 Roles for generic tooling: `primary` = ink, `secondary` = mid, `tertiary` = accent, `neutral` = paper.
@@ -249,7 +249,7 @@ Roles for generic tooling: `primary` = ink, `secondary` = mid, `tertiary` = acce
 
 **Multi-zone color** is allowed when every color carries a function: a solid PRIORITY band, a colored stamp on a neutral ground, sticker-style blocks. Red = warning/priority, yellow = caution, green = approved, black = classification. Color is always a system signal, never decoration.
 
-**Contrast.** `ink` on paper is 17.7:1 and `accent` on paper 4.95:1. `mid` (3.2:1), `muted` (2.1:1) and `faint` (1.7:1) sit below WCAG AA on purpose: they carry tracked uppercase labels that repeat nearby information and `aria-hidden` texture. Anything a user must read goes in `ink` or `dark`.
+**Contrast.** `ink` on paper is 17.7:1, `mid` 4.8:1 and `accent` 4.95:1, all WCAG AA. `muted` (2.1:1) and `faint` (1.7:1) sit below AA on purpose: they carry tracked uppercase labels that repeat nearby information and `aria-hidden` texture. Anything a user must read goes in `ink` or `dark`.
 
 ## Typography
 

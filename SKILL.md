@@ -230,6 +230,7 @@ Near-monochromatic palette. The constraint is the aesthetic. Two canonical modes
   --color-muted:   #888888;  /* zone category labels */
   --color-faint:   #3A3A3A;  /* REF/SKU codes */
   --color-white:   #FAFAFA;  /* display number, primary text */
+  --color-hatch:   #1A1A1A;  /* diagonal hatching stripes, table row hover */
   --color-accent:  #FF8C00;  /* safety orange — collage default for dark/HUD; exactly 3 uses */
 }
 ```
@@ -240,11 +241,12 @@ Near-monochromatic palette. The constraint is the aesthetic. Two canonical modes
   --color-bg:      #F4F2EE;  /* warm label paper — NOT pure white */
   --color-ink:     #0A0A0A;  /* display number, primary text */
   --color-dark:    #1A1A1A;  /* strong label text */
-  --color-mid:     #888888;  /* field labels, chip text non-active */
+  --color-mid:     #6B6B6B;  /* field labels, chip text non-active — 4.8:1 on paper (WCAG AA) */
   --color-muted:   #AAAAAA;  /* dimension line labels, unit suffix */
   --color-faint:   #BBBBBB;  /* REF/SKU codes, serial strip, meta bar */
   --color-border:  #C8C4BE;  /* all zone borders, brackets, dots, geo separators */
-  --color-hatch:   #E4E0DA;  /* diagonal hatching stripes */
+  --color-hatch:   #E4E0DA;  /* diagonal hatching stripes, table row hover */
+  --color-white:   #FAFAFA;  /* text on ink/accent fills, input wells */
   --color-accent:  #CC2200;  /* signal red — collage default for light/physical; exactly 3 uses */
 }
 ```
@@ -329,13 +331,13 @@ Two CSS-only patterns that add density and zone differentiation without SVG over
     -45deg,
     transparent,
     transparent 3px,
-    var(--color-ink) 3px,
-    var(--color-ink) 4px
+    var(--color-hatch) 3px,
+    var(--color-hatch) 4px
   );
 }
 ```
 
-Both patterns must use `--color-dark` or `--color-ink` values only — never the accent color. Use one per component maximum. They should read as texture, not as a deliberate graphic element.
+Both patterns must use `--color-dark` or `--color-hatch` values only — never the accent color. Use one per component maximum. They should read as texture, not as a deliberate graphic element.
 
 **Photocopy / archival grain** — optional overlay for collage-aligned outputs. Reads as a scanned duplicate, not a glossy screen. Use on the card container or a passive zone — one per component maximum. This is structure (archival texture), not a decorative gradient:
 
@@ -426,7 +428,7 @@ The atomic badge for status, category, and filter state.
 ```css
 .chip {
   font-family: 'Barlow Condensed', ui-sans-serif;
-  font-size: var(--text-xs);         /* 10px */
+  font-size: var(--text-xs);         /* 8px */
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -475,7 +477,7 @@ Primary container for a dense UI block. Three slots — not document landmarks:
 ```css
 .spec-card {
   border: var(--border-dark);
-  background: var(--color-white);
+  background: var(--color-bg);
 }
 
 .spec-card__meta-strip {
@@ -695,7 +697,7 @@ Tables in micrographic style are dense and grid-like. Every row is a data entry;
 }
 
 .data-table tr:hover td {
-  background: var(--color-surface);
+  background: var(--color-hatch);
 }
 ```
 
@@ -1331,7 +1333,7 @@ A micrographic **view** is a composed layout of components inside a `SpecCard` (
 Dense design creates real accessibility challenges. Address them deliberately:
 
 - Maintain WCAG AA contrast even at small sizes — use `--color-ink` (#1A1A1A) not `--color-mid` for any readable body text
-- Text at `--text-micro` (8px) should be **decorative only** — never put critical content at this size
+- Text at `--text-micro` (7px) should be **decorative only** — never put critical content at this size
 - Interactive elements need minimum 32px touch/click targets regardless of visual size
 - Visible focus states are essential: `outline: 2px solid var(--color-accent); outline-offset: 2px`
 - Don't rely on color alone for state — pair color changes with border or text label changes
