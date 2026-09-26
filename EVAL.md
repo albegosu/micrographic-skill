@@ -51,6 +51,7 @@ Author:  Alberto González <alberto@resiz.es>
 ## Changelog
 
 ```
+1.2.0  —           DESIGN.md (Google spec) extracted from SKILL.md; drift guard (check:design); installer --design-md; SpecCard example built only from DESIGN.md.
 1.1.0  —           SKILL v1.1: collage north star, PosterView/PKG card, component vocabulary; EVAL prompt B; header build pipeline.
 1.0.1  —           LICENSE fix; npm registry alignment. Prompt A spec card.
 1.0.0  —           Initial release.
