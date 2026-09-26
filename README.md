@@ -80,6 +80,11 @@ Inside: the light-mode label palette (ink on warm paper, one signal accent) with
 
 `SKILL.md` stays the source of truth. `npm run check:design` lints `DESIGN.md` and fails if any token drifts from `SKILL.md`.
 
+<div align="center">
+  <img src="./examples/design-md-spec-card.png" alt="SpecCard built by an agent from DESIGN.md alone" width="560"/>
+  <br/><sub>Built by an agent from <code>DESIGN.md</code> alone, without <code>SKILL.md</code> (<a href="./examples/design-md-spec-card.html">source</a>).</sub>
+</div>
+
 ---
 
 ## Usage
