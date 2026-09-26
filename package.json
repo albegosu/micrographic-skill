@@ -26,11 +26,11 @@
   },
   "type": "module",
   "scripts": {
-    "build:header": "node scripts/build-header.mjs",
+    "build:hero": "node scripts/build-hero.mjs",
     "check:design": "node scripts/check-design-md.mjs",
     "lint:design": "designmd lint DESIGN.md",
     "test": "npm run check:design",
-    "prepack": "npm run build:header && npm run check:design",
+    "prepack": "npm run check:design",
     "screenshot:eval": "node scripts/screenshot-eval.mjs",
     "screenshot:design-md": "node scripts/screenshot-eval.mjs examples/design-md-spec-card.html \"#design-md-example\"",
     "release:patch": "npm version patch -m 'chore(release): %s'",
@@ -47,9 +47,7 @@
     "DESIGN.md",
     "EVAL.md",
     "README.md",
-    "LICENSE",
-    "assets/header.svg",
-    "assets/header-data.json"
+    "LICENSE"
   ],
   "engines": {
     "node": ">=18"
