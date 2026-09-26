@@ -88,10 +88,7 @@ const PROSE_ONLY = {
 };
 
 /** Deliberate, documented differences. Key: "component.property". */
-const EXCEPTIONS = {
-  "spec-card.backgroundColor":
-    "SKILL.md's light palette has no --color-white, so .spec-card shows the paper (#F4F2EE), as in examples/v1.1.0",
-};
+const EXCEPTIONS = {};
 
 const CSS_PROP = { textColor: "color", backgroundColor: "background", padding: "padding", height: "height", size: "width", width: "width" };
 
@@ -136,8 +133,8 @@ for (const { css } of cssBlocks) {
   }
 }
 
-/** Resolve var(--x) against the light palette (white falls back to dark: light omits it) + globals. */
-const lightColor = (name) => light[name] ?? (name === "color-white" ? dark[name] : undefined);
+/** Resolve var(--x) against the light palette + globals. */
+const lightColor = (name) => light[name];
 const resolveCss = (value) =>
   value.replace(/var\(--([\w-]+)\)/g, (_, n) => resolveCss(lightColor(n) ?? globals[n] ?? `var(--${n})`));
 
@@ -311,7 +308,7 @@ for (const key of Object.keys(EXCEPTIONS)) {
   const [name, prop] = key.split(".");
   check("components", front.components[name]?.[prop] !== undefined, `stale exception ${key}`);
 }
-done("components", `${Object.keys(front.components).length} components · ${compared} values match SKILL.md CSS · ${Object.keys(EXCEPTIONS).length} documented exception`);
+done("components", `${Object.keys(front.components).length} components · ${compared} values match SKILL.md CSS · ${Object.keys(EXCEPTIONS).length} documented exception${Object.keys(EXCEPTIONS).length === 1 ? "" : "s"}`);
 
 // ── Report ──────────────────────────────────────────────────────────────────
 
