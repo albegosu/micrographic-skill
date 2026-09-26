@@ -32,6 +32,7 @@
     "test": "npm run check:design",
     "prepack": "npm run build:header && npm run check:design",
     "screenshot:eval": "node scripts/screenshot-eval.mjs",
+    "screenshot:design-md": "node scripts/screenshot-eval.mjs examples/design-md-spec-card.html \"#design-md-example\"",
     "release:patch": "npm version patch -m 'chore(release): %s'",
     "release:minor": "npm version minor -m 'chore(release): %s'",
     "release:major": "npm version major -m 'chore(release): %s'"

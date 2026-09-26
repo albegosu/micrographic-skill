@@ -1,0 +1,496 @@
+<!doctype html>
+<!--
+  Generated from DESIGN.md only (Micrographic, Google Labs DESIGN.md format).
+  Token layer: verbatim output of `npx designmd export --format css-vars DESIGN.md`.
+  Typography tokens are not exported as vars, so their front-matter values are applied by hand below.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AQ-7 SpecCard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Token layer: `designmd export --format css-vars DESIGN.md` (verbatim) ── */
+:root {
+  --color-bg: #f4f2ee;
+  --color-ink: #0a0a0a;
+  --color-dark: #1a1a1a;
+  --color-mid: #888888;
+  --color-muted: #aaaaaa;
+  --color-faint: #bbbbbb;
+  --color-border: #c8c4be;
+  --color-hatch: #e4e0da;
+  --color-accent: #cc2200;
+  --color-white: #fafafa;
+  --color-primary: #0a0a0a;
+  --color-secondary: #888888;
+  --color-tertiary: #cc2200;
+  --color-neutral: #f4f2ee;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-card-width: 560px;
+  --spacing-col-poster-min: 268px;
+  --rounded-none: 0px;
+  --rounded-sm: 2px;
+  --rounded-full: 9999px;
+}
+
+/* ── Typography tokens (front matter values, applied directly) ── */
+.t-display-spec { font-family: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif; font-size: 80px; font-weight: 300; line-height: 1; letter-spacing: -0.02em; font-feature-settings: "tnum" 1; }
+.t-label-micro  { font-family: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif; font-size: 7px;  font-weight: 600; line-height: 1.2; letter-spacing: 0.12em; text-transform: uppercase; }
+.t-label-xs     { font-family: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif; font-size: 8px;  font-weight: 600; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; }
+.t-data-micro   { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 7px;  font-weight: 400; line-height: 1.3; letter-spacing: 0.08em; }
+.t-data-xs      { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 8px;  font-weight: 400; line-height: 1.3; font-feature-settings: "tnum" 1; }
+.t-data-sm      { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; font-weight: 400; line-height: 1.3; font-feature-settings: "tnum" 1; }
+.t-data-md      { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; font-weight: 500; line-height: 1.2; font-feature-settings: "tnum" 1; }
+
+/* ── Page surround (outside the component) ── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--color-hatch);
+  padding: var(--spacing-12);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+dl, dt, dd, ul, li, p { margin: 0; padding: 0; }
+ul { list-style: none; }
+
+/* ── SpecCard shell: border-dark, one cut edge (dashed right) ── */
+.spec-card {
+  --col-a: 213px; /* fallback for 38% of card-width */
+  --col-a: round(nearest, calc(var(--spacing-card-width) * 0.38), 1px);
+  width: var(--spacing-card-width);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  border: 1px solid var(--color-dark);
+  border-right: 1px dashed var(--color-dark); /* the physical cut */
+  border-radius: var(--rounded-none);
+  overflow: hidden; /* outer shell only */
+}
+
+/* ── Chip ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: 2px 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--rounded-none);
+  color: var(--color-mid);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.chip-filled { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-white); }
+.chip-active { color: var(--color-accent); border-color: var(--color-accent); }         /* accent use 1/3 */
+.chip .sep { letter-spacing: 0; }
+
+/* Status dot: 5px accent dot, 11px ring at 40%, paired with the active chip */
+.status-dot {
+  position: relative;
+  width: 11px; height: 11px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+  border-radius: var(--rounded-full);
+  flex-shrink: 0;
+}
+.status-dot::after {
+  content: "";
+  position: absolute;
+  left: 2px; top: 2px;
+  width: 5px; height: 5px;
+  background: var(--color-accent);
+  border-radius: var(--rounded-full);
+}
+
+/* ── MetaStrip: fixed 28px, never wraps, title + REF ellipsize ── */
+.meta-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  height: 28px;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ms-title {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-ink);
+}
+.ms-ref {
+  flex: 0 1 auto;
+  min-width: 0;
+  margin-left: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-dark);
+}
+.ms-ref .k { color: var(--color-muted); }
+.ms-ref .ref { color: var(--color-faint); }
+
+/* ── CardBody ── */
+.card-body {
+  padding: var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* ── Split: DisplayHero column (38% of card-width) + DataPanel ── */
+.split-wrap { position: relative; }
+.split {
+  display: grid;
+  grid-template-columns: var(--col-a) 1fr;
+  border: 1px solid var(--color-border);
+}
+
+/* DisplayHero — Mode A (spec). No overflow:hidden here. */
+.display-zone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 10px 16px;
+  border-right: 1px solid var(--color-border);
+  color: var(--color-ink);
+}
+.dz-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--spacing-2);
+  padding-left: 10px;
+  color: var(--color-dark);
+}
+.dz-head .u { text-transform: none; letter-spacing: 0; }
+.dz-figure {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-1);
+  margin-top: var(--spacing-2);
+  padding-left: 10px;
+}
+.dh-wrap { position: relative; display: inline-block; }
+.dh-num { display: block; color: var(--color-ink); }
+.dh-unit { margin-top: 14px; color: var(--color-muted); }
+
+/* Dimension annotation bracketing the display element */
+.dim { position: relative; height: 20px; margin-top: 2px; }
+.dim-line { position: absolute; left: 0; right: 0; top: 3px; height: 1px; background: var(--color-muted); }
+.dim-line::before, .dim-line::after, .dim-mid {
+  content: ""; position: absolute; top: -3px; width: 1px; height: 7px; background: var(--color-muted);
+}
+.dim-line::before { left: 0; }
+.dim-line::after { right: 0; }
+.dim-mid { left: 50%; top: -2px; height: 5px; }
+.dim-label {
+  position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+  white-space: nowrap; color: var(--color-muted);
+}
+
+/* Schematic: PM2.5 breakpoint scale */
+.scale { position: relative; height: 30px; margin-top: auto; }
+.scale > * { position: absolute; }
+.sc-band { top: 0; padding-left: 2px; color: var(--color-muted); white-space: nowrap; }
+.sc-axis { left: 0; right: 0; top: 15px; height: 1px; background: var(--color-dark); }
+.sc-seg { top: 14px; height: 3px; background: var(--color-ink); }
+.sc-tick { top: 15px; width: 1px; height: 5px; background: var(--color-dark); }
+.sc-marker {
+  top: 9px; width: 0; height: 0; margin-left: -3px;
+  border-left: 3px solid transparent; border-right: 3px solid transparent; border-top: 4px solid var(--color-ink);
+}
+.sc-num { top: 21px; color: var(--color-muted); white-space: nowrap; transform: translateX(-50%); }
+.sc-num.first { transform: none; }
+.sc-num.last { transform: none; left: auto; right: 0; }
+
+/* 24H min / avg / max */
+.minmax {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--spacing-2);
+  border-top: 1px solid var(--color-border);
+}
+.minmax > div { padding: 4px 6px 0; }
+.minmax > div + div { border-left: 1px solid var(--color-border); }
+.minmax dt { color: var(--color-mid); }
+.minmax dd { color: var(--color-dark); }
+
+/* Corner brackets: 14px L-shapes, 1.5px strokes, top-left in the accent */
+.bracket { position: absolute; width: 14px; height: 14px; pointer-events: none; }
+.bracket.tl { top: 4px; left: 4px; border-top: 1.5px solid var(--color-accent); border-left: 1.5px solid var(--color-accent); } /* accent use 3/3 */
+.bracket.tr { top: 4px; right: 4px; border-top: 1.5px solid var(--color-dark); border-right: 1.5px solid var(--color-dark); }
+.bracket.bl { bottom: 4px; left: 4px; border-bottom: 1.5px solid var(--color-dark); border-left: 1.5px solid var(--color-dark); }
+.bracket.br { bottom: 4px; right: 4px; border-bottom: 1.5px solid var(--color-dark); border-right: 1.5px solid var(--color-dark); }
+
+/* ── DataPanel ── */
+.data-panel { min-width: 0; }
+.data-panel table { width: 100%; border-collapse: collapse; }
+.data-panel thead th {
+  padding: 4px 8px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-muted);
+  border-bottom: 1px solid var(--color-dark);
+  white-space: nowrap;
+}
+.data-panel tbody td,
+.data-panel tbody th {
+  padding: var(--spacing-2);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+.data-panel tbody tr:last-child > * { border-bottom: 0; }
+.data-panel .num { text-align: right; }
+.data-panel .ch { color: var(--color-faint); }
+.data-panel tbody th { color: var(--color-dark); }
+.data-panel .val { color: var(--color-ink); }
+.data-panel .key-metric { color: var(--color-accent); }                                  /* accent use 2/3 */
+.data-panel .flag { margin-left: 4px; color: var(--color-dark); }
+.data-panel .unit { color: var(--color-muted); }
+.data-panel .delta { color: var(--color-dark); text-align: right; }
+
+/* ── Micro-geometry layer (aria-hidden, pointer-events: none) ── */
+.geo { position: absolute; inset: 0; pointer-events: none; }
+.reg { position: absolute; width: 9px; height: 9px; }
+.reg::before, .reg::after { content: ""; position: absolute; background: var(--color-faint); }
+.reg::before { left: 0; top: 4px; width: 9px; height: 1px; }
+.reg::after { left: 4px; top: 0; width: 1px; height: 9px; }
+.reg.top-mid { left: calc(var(--col-a) - 4px); top: -4px; }
+.reg.bot-mid { left: calc(var(--col-a) - 4px); top: calc(100% - 5px); }
+.reg.top-right { left: calc(100% - 5px); top: -4px; }
+.reg.bot-left { left: -4px; top: calc(100% - 5px); }
+.coord { position: absolute; top: -11px; color: var(--color-faint); }
+.coord.a1 { left: 4px; }
+.coord.b1 { left: calc(var(--col-a) + 8px); }
+.itick { position: absolute; width: 1px; height: 4px; background: var(--color-dark); }
+
+/* ── AnnotationRow: circle markers joined by dimension lines ── */
+.annotation-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 10px;
+  color: var(--color-faint);
+  white-space: nowrap;
+}
+.annotation-row svg { flex-shrink: 0; display: block; }
+.annotation-row circle { fill: none; stroke: var(--color-muted); stroke-width: 1; }
+.ar-line { flex: 1 1 auto; height: 1px; background: var(--color-border); }
+
+/* ── Row 2: ChipRow block · hatching texture · IdStrip ── */
+.row2-wrap { position: relative; }
+.row2 {
+  display: grid;
+  grid-template-columns: auto 1fr 120px;
+  border: 1px solid var(--color-border);
+}
+.chip-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  padding: var(--spacing-2);
+  border-right: 1px solid var(--color-border);
+}
+.chip-row { display: flex; }
+.chip-row .chip + .chip { border-left-width: 0; } /* neighbors share one hairline; last keeps its right border */
+.chip-note { color: var(--color-faint); white-space: nowrap; }
+
+.texture-hatch { position: relative; min-width: 0; }
+.texture-hatch svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.texture-hatch .stripe { fill: var(--color-hatch); }
+
+.id-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 10px;
+  border-left: 1px solid var(--color-border);
+  color: var(--color-faint);
+}
+.id-strip svg { display: block; }
+.id-strip path { fill: var(--color-dark); }
+.row2-wrap .itick.t { left: calc(100% - 121px); top: -4px; }
+.row2-wrap .itick.b { left: calc(100% - 121px); top: 100%; }
+
+/* ── MetaBar ── */
+.meta-bar {
+  padding: 8px 12px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
+</head>
+<body>
+
+<div id="design-md-example" class="spec-card" role="group" aria-labelledby="aq7-title" data-component="SpecCard">
+
+  <!-- MetaStrip -->
+  <div class="meta-strip t-label-xs" data-component="MetaStrip">
+    <span class="chip chip-filled">ENV · AQ</span>
+    <span class="ms-title" id="aq7-title">AQ-7 Field Sensor</span>
+    <span class="ms-ref t-data-xs"><span class="k">SN</span> AQ7-0419-B · <span class="k">FW</span> v2.4.1<span class="ref" aria-hidden="true"> · REF-AQ7-SC · REV.03</span></span>
+  </div>
+
+  <!-- CardBody -->
+  <div class="card-body" data-component="CardBody">
+
+    <div class="split-wrap">
+      <div class="split">
+
+        <!-- DisplayHero (Mode A, display-spec) -->
+        <div class="display-zone" data-component="DisplayHero">
+          <span class="bracket tl" aria-hidden="true"></span>
+          <span class="bracket tr" aria-hidden="true"></span>
+          <span class="bracket bl" aria-hidden="true"></span>
+          <span class="bracket br" aria-hidden="true"></span>
+
+          <div class="dz-head">
+            <span class="t-label-xs">PM2.5 <span class="u t-data-xs">µg/m³</span></span>
+            <span class="t-data-xs">09:41:07Z</span>
+          </div>
+
+          <div class="dz-figure">
+            <div class="dh-wrap">
+              <span class="dh-num t-display-spec">12.4</span>
+              <div class="dim" aria-hidden="true">
+                <span class="dim-line"><span class="dim-mid"></span></span>
+                <span class="dim-label t-data-micro">1-MIN AVG · ±0.8</span>
+              </div>
+            </div>
+            <span class="dh-unit t-data-xs" aria-hidden="true">µg/m³</span>
+          </div>
+
+          <div class="scale" aria-hidden="true">
+            <span class="sc-band t-label-micro" style="left:0">Good</span>
+            <span class="sc-band t-label-micro" style="left:16.25%">Mod</span>
+            <span class="sc-band t-label-micro" style="left:63.9%">USG</span>
+            <span class="sc-marker" style="left:22.38%"></span>
+            <span class="sc-axis"></span>
+            <span class="sc-seg" style="left:16.25%;width:47.65%"></span>
+            <span class="sc-tick" style="left:0"></span>
+            <span class="sc-tick" style="left:16.25%"></span>
+            <span class="sc-tick" style="left:63.9%"></span>
+            <span class="sc-tick" style="right:0"></span>
+            <span class="sc-num first t-data-micro" style="left:0">0</span>
+            <span class="sc-num t-data-micro" style="left:16.25%">9.0</span>
+            <span class="sc-num t-data-micro" style="left:63.9%">35.4</span>
+            <span class="sc-num last t-data-micro">55.4</span>
+          </div>
+
+          <dl class="minmax">
+            <div><dt class="t-label-micro">Min 24H</dt><dd class="t-data-sm">6.1</dd></div>
+            <div><dt class="t-label-micro">Avg 24H</dt><dd class="t-data-sm">11.2</dd></div>
+            <div><dt class="t-label-micro">Max 24H</dt><dd class="t-data-sm">18.9</dd></div>
+          </dl>
+        </div>
+
+        <!-- DataPanel -->
+        <div class="data-panel" data-component="DataPanel">
+          <table>
+            <thead class="t-label-micro">
+              <tr><th scope="col"><span aria-hidden="true">CH</span></th><th scope="col">Field</th><th scope="col">Value</th><th scope="col">Unit</th><th scope="col" class="num">Δ1H</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="ch t-data-xs"><span aria-hidden="true">C01</span></td><th scope="row" class="t-label-xs">Temp</th><td class="val t-data-md">21.6</td><td class="unit t-data-xs">°C</td><td class="delta t-data-xs">+0.3</td></tr>
+              <tr><td class="ch t-data-xs"><span aria-hidden="true">C02</span></td><th scope="row" class="t-label-xs">Humidity</th><td class="val t-data-md">48.2</td><td class="unit t-data-xs">%RH</td><td class="delta t-data-xs">−1.1</td></tr>
+              <tr><td class="ch t-data-xs"><span aria-hidden="true">C03</span></td><th scope="row" class="t-label-xs">CO₂</th><td class="val t-data-md">612</td><td class="unit t-data-xs">ppm</td><td class="delta t-data-xs">+18</td></tr>
+              <tr><td class="ch t-data-xs"><span aria-hidden="true">C04</span></td><th scope="row" class="t-label-xs">AQI</th><td class="val t-data-md"><span class="key-metric">057</span><span class="flag t-label-xs">Mod</span></td><td class="unit t-data-xs">US-EPA</td><td class="delta t-data-xs">+04</td></tr>
+              <tr><td class="ch t-data-xs"><span aria-hidden="true">C05</span></td><th scope="row" class="t-label-xs">Battery</th><td class="val t-data-md">87</td><td class="unit t-data-xs">%</td><td class="delta t-data-xs">−0.4</td></tr>
+              <tr><td class="ch t-data-xs"><span aria-hidden="true">C06</span></td><th scope="row" class="t-label-xs">Uptime</th><td class="val t-data-md">14d 06:12</td><td class="unit t-data-xs">d h:m</td><td class="delta t-data-xs">—</td></tr>
+              <tr><td class="ch t-data-xs"><span aria-hidden="true">C07</span></td><th scope="row" class="t-label-xs">Last cal</th><td class="val t-data-md">2026-09-02</td><td class="unit t-data-xs">ISO</td><td class="delta t-data-xs">23d</td></tr>
+              <tr><td class="ch t-data-xs"><span aria-hidden="true">C08</span></td><th scope="row" class="t-label-xs">Location</th><td class="val t-data-md">MAD-N07-G3</td><td class="unit t-data-xs">code</td><td class="delta t-data-xs">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- micro-geometry: registration marks, grid coordinates -->
+      <div class="geo" aria-hidden="true">
+        <span class="reg top-mid"></span>
+        <span class="reg bot-mid"></span>
+        <span class="reg top-right"></span>
+        <span class="reg bot-left"></span>
+        <span class="coord a1 t-data-micro">A1</span>
+        <span class="coord b1 t-data-micro">B1</span>
+      </div>
+    </div>
+
+    <!-- AnnotationRow -->
+    <div class="annotation-row t-data-micro" aria-hidden="true" data-component="AnnotationRow">
+      <svg width="5" height="5" viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2"/></svg>
+      <span class="ar-line"></span>
+      <span>INTAKE 1.0 L/MIN</span>
+      <span class="ar-line"></span>
+      <svg width="5" height="5" viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2"/></svg>
+      <span class="ar-line"></span>
+      <span>LASER SCATTER · 0.3–10 µm · λ650nm</span>
+      <span class="ar-line"></span>
+      <svg width="5" height="5" viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2"/></svg>
+    </div>
+
+    <!-- ChipRow · texture · IdStrip -->
+    <div class="row2-wrap">
+      <div class="row2">
+        <div class="chip-block">
+          <ul class="chip-row t-label-xs" data-component="ChipRow" aria-label="Status">
+            <li class="chip chip-active"><span class="status-dot" aria-hidden="true"></span>Live</li>
+            <li class="chip">Cal <span class="sep" aria-hidden="true">◇</span> OK</li>
+            <li class="chip">GPS <span class="sep" aria-hidden="true">△</span> 3D</li>
+            <li class="chip">Net <span class="sep" aria-hidden="true">·</span> LTE-M</li>
+            <li class="chip">Solar</li>
+          </ul>
+          <p class="chip-note t-data-micro" aria-hidden="true">OP −20…+60°C · 5V DC 1A · CE · IP67 · SKU/AQ7-F</p>
+        </div>
+
+        <div class="texture-hatch" aria-hidden="true" data-component="TexturePanel">
+          <svg>
+            <defs>
+              <pattern id="aq7-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect class="stripe" width="1" height="4"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#aq7-hatch)"/>
+          </svg>
+        </div>
+
+        <div class="id-strip" aria-hidden="true" data-component="IdStrip">
+          <svg width="99" height="28" viewBox="0 0 99 28" shape-rendering="crispEdges"><path d="M0 0h1v28h-1zM2 0h1v28h-1zM5 0h2v28h-2zM8 0h1v28h-1zM10 0h1v28h-1zM14 0h2v28h-2zM17 0h1v28h-1zM21 0h2v28h-2zM24 0h2v28h-2zM27 0h1v28h-1zM31 0h2v28h-2zM34 0h2v28h-2zM37 0h1v28h-1zM41 0h1v28h-1zM43 0h2v28h-2zM46 0h1v28h-1zM50 0h1v28h-1zM52 0h1v28h-1zM54 0h1v28h-1zM56 0h1v28h-1zM60 0h1v28h-1zM62 0h1v28h-1zM64 0h1v28h-1zM66 0h2v28h-2zM71 0h1v28h-1zM73 0h1v28h-1zM77 0h2v28h-2zM80 0h2v28h-2zM83 0h1v28h-1zM87 0h1v28h-1zM89 0h1v28h-1zM92 0h2v28h-2zM96 0h1v28h-1zM98 0h1v28h-1z"/></svg>
+          <span class="t-data-micro">4 0419 2471 07</span>
+        </div>
+      </div>
+
+      <!-- intersection tick where the IdStrip divider meets the row borders -->
+      <div class="geo" aria-hidden="true">
+        <span class="itick t"></span>
+        <span class="itick b"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MetaBar -->
+  <div class="meta-bar t-data-micro" aria-hidden="true" data-component="MetaBar">REF-AQ7-SC-0419 · HW REV.03 · BUILD 2026.08.14 · TS 2026-09-25T09:41:07Z · 40.4168N 003.7038W · 0000 0001 0002 0003</div>
+
+</div>
+
+</body>
+</html>
