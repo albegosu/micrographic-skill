@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/header.svg" alt="micrographic-skill — UI Design System for AI Coding Agents" width="820"/>
+  <img src="./assets/hero.png" alt="micrographic-skill spec plate: MICRO GRAPHIC display type, the two formats it ships as (SKILL.md, DESIGN.md, Cursor rules) with their install commands, and the spec read from DESIGN.md: 14 colors, 11 type tokens, 26 components, 4px grid, radius up to 2px, lint 0 errors 0 warnings." width="100%"/>
 </div>
 
 <br/>
@@ -14,12 +14,24 @@
 
 ---
 
-A `SKILL.md` for AI coding agents that instructs them to build **dense, technical, schematic UI** — inspired by industrial product labels, hardware spec sheets, care instructions, and Swiss modernist typography.
+**Dense, technical, schematic UI for AI coding agents.** Industrial product labels, hardware
+spec sheets, care tags and Swiss grids, as a design system your agent follows by default.
+One system, two formats: a `SKILL.md` for Cursor, Claude Code, Codex, Windsurf and Gemini,
+and a [`DESIGN.md`](./DESIGN.md) in Google Labs' format for any DESIGN.md-aware tool.
 
-Think Maison Margiela's inner labels, Virgil Abloh's Off-White graphics, and Wim Crouwel's grid systems — as a production-ready design system your agent follows automatically.
+```bash
+npx micrographic-skill              # the skill, into the agent you use
+npx micrographic-skill --design-md  # the same system as ./DESIGN.md
+```
+
+<div align="center">
+  <img src="./examples/design-md-spec-card.png" alt="A field-sensor panel in the micrographic style: one 12.4 display reading, a dense channel table, a status chip row, hatching and a barcode" width="560"/>
+  <br/><sub>An agent built this panel from <code>DESIGN.md</code> alone, without <code>SKILL.md</code> (<a href="./examples/design-md-spec-card.html">source</a>).</sub>
+</div>
 
 > **This is not minimalism. Minimalism removes. Micrographic *compresses*.**  
-> Every element earns its place. Information becomes decoration.
+> Every element earns its place. Information becomes decoration. Think Maison Margiela's inner
+> labels, Virgil Abloh's Off-White graphics and Wim Crouwel's grids.
 
 ---
 
@@ -80,11 +92,6 @@ Inside: the light-mode label palette (ink on warm paper, one signal accent) with
 
 `SKILL.md` stays the source of truth. `npm run check:design` lints `DESIGN.md` and fails if any token drifts from `SKILL.md`.
 
-<div align="center">
-  <img src="./examples/design-md-spec-card.png" alt="SpecCard built by an agent from DESIGN.md alone" width="560"/>
-  <br/><sub>Built by an agent from <code>DESIGN.md</code> alone, without <code>SKILL.md</code> (<a href="./examples/design-md-spec-card.html">source</a>).</sub>
-</div>
-
 ---
 
 ## Usage
@@ -106,18 +113,18 @@ The skill encodes a complete design system — your agent follows it to generate
 
 | Token | Value | Purpose |
 |---|---|---|
-| `--text-micro` | `8px` | Decorative annotations only |
-| `--text-xs` | `10px` | Tags, meta labels |
-| `--text-xl` | `32px` | Display numerals |
-| `--text-2xl` | `56px` | Hero figures |
-| `--color-accent` | `#CC2200` (signal orange; `#0033FF` HUD variant) | One hit per screen |
-| `--border` | `1px solid #D4D4D4` | Zone skeleton |
-| `--border-dark` | `1px solid #2A2A2A` | Component boundary |
+| `--text-micro` | `7px` | Decorative annotations only |
+| `--text-xs` · `--text-sm` · `--text-md` | `8 · 10 · 11px` | The micro scale: annotations, chips, table cells |
+| `--text-display` · `-lg` · `-xl` | `80 · 96 · 120px` | One display element per component; nothing between 11 and 80 |
+| `--color-bg` | `#F4F2EE` | Warm label paper (light mode), never pure white |
+| `--color-accent` | `#CC2200` signal red (light) · `#FF8C00` safety orange (dark) | Exactly three uses per view |
+| `--border` | `1px solid #C8C4BE` | Zone skeleton |
+| `--border-dark` | `1px solid #1A1A1A` | Component boundary |
 | `border-radius` | `0–2px` | Angular only |
 
 **Typography:** `Barlow Condensed` (display) + `IBM Plex Mono` (data, annotations)  
-**Palette:** Near-monochromatic — black, white, five grays, one accent  
-**Spacing:** 4px micro-grid (`4 / 8 / 12 / 16 / 24 / 32px`)  
+**Palette:** Near-monochromatic: ink on warm paper, five grays, one accent  
+**Spacing:** 4px micro-grid (`4 / 8 / 12 / 16 / 24 / 32 / 48 / 64px`)  
 **Decoration:** Registration marks `+`, reference codes `REF-0042-A`, serial number strips, grid coordinates `A1`
 
 ---
