@@ -14,7 +14,7 @@ All **documentation, comments, commit messages, and user-facing CLI output** in 
 ## Before you open a pull request
 
 1. **Fork** the repository and create a branch from `main` (for example `fix/install-dry-run`, `docs/clarify-tokens`).
-2. Skill content lives in the root **`SKILL.md`** — the installer copies that file into each agent’s skills directory. Edit `SKILL.md` for design-system changes.
+2. Skill content lives in the root **`SKILL.md`** — the installer copies that file into each agent’s skills directory. Edit `SKILL.md` for design-system changes. The root **`DESIGN.md`** repeats its tokens in the [DESIGN.md format](https://github.com/google-labs-code/design.md); when you change a color, type size, spacing step or component value in `SKILL.md`, update `DESIGN.md` too and run `npm run check:design` (official lint + drift guard; it fails on any mismatch).
 3. Test the installer from your clone (use a throwaway folder if you do not want to touch a real project):
 
    ```bash
@@ -29,6 +29,7 @@ All **documentation, comments, commit messages, and user-facing CLI output** in 
 
 - [ ] New or changed user-facing text is in **English**.
 - [ ] Root `SKILL.md` updated when design rules change.
+- [ ] `npm run check:design` passes (DESIGN.md lint + drift guard against SKILL.md).
 - [ ] `node bin/install.mjs --dry-run` runs without errors.
 - [ ] No secrets, credentials, or machine-specific paths committed.
 

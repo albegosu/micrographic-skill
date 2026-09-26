@@ -1,10 +1,12 @@
 {
   "name": "micrographic-skill",
   "version": "1.1.0",
-  "description": "Micrographic UI design skill for AI coding agents — Cursor, Claude Code, Codex, and more.",
+  "description": "Micrographic UI design skill for AI coding agents — Cursor, Claude Code, Codex, and more. Also ships as a DESIGN.md.",
   "keywords": [
     "skill",
     "design",
+    "design-md",
+    "design-tokens",
     "micrographic",
     "cursor",
     "claude",
@@ -25,8 +27,12 @@
   "type": "module",
   "scripts": {
     "build:header": "node scripts/build-header.mjs",
-    "prepack": "npm run build:header",
+    "check:design": "node scripts/check-design-md.mjs",
+    "lint:design": "designmd lint DESIGN.md",
+    "test": "npm run check:design",
+    "prepack": "npm run build:header && npm run check:design",
     "screenshot:eval": "node scripts/screenshot-eval.mjs",
+    "screenshot:design-md": "node scripts/screenshot-eval.mjs examples/design-md-spec-card.html \"#design-md-example\"",
     "release:patch": "npm version patch -m 'chore(release): %s'",
     "release:minor": "npm version minor -m 'chore(release): %s'",
     "release:major": "npm version major -m 'chore(release): %s'"
@@ -38,6 +44,7 @@
     "bin/",
     "rules/",
     "SKILL.md",
+    "DESIGN.md",
     "EVAL.md",
     "README.md",
     "LICENSE",
@@ -48,6 +55,8 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "playwright": "^1.60.0"
+    "@google/design.md": "^0.4.0",
+    "playwright": "^1.60.0",
+    "yaml": "^2.9.1"
   }
 }

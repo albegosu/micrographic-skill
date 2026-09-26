@@ -53,6 +53,40 @@ npx micrographic-skill --dry-run
 
 ---
 
+## Use as DESIGN.md
+
+The same system ships as a [`DESIGN.md`](./DESIGN.md) in Google Labs' open [DESIGN.md format](https://github.com/google-labs-code/design.md): machine-readable tokens in YAML front matter plus the rules as prose, read by any DESIGN.md-aware agent or tool from your project root. No skill loader required.
+
+```bash
+npx micrographic-skill --design-md               # → ./DESIGN.md only
+npx micrographic-skill --claude --design-md      # skill + DESIGN.md
+npx micrographic-skill --design-md --force       # overwrite an existing ./DESIGN.md
+```
+
+The installer never overwrites a `DESIGN.md` you already have unless you pass `--force`. Or fetch the file directly:
+
+```bash
+curl -O https://raw.githubusercontent.com/albegosu/micrographic-skill/main/DESIGN.md
+```
+
+Validate it, or turn the tokens into a theme, with the official CLI:
+
+```bash
+npx @google/design.md lint DESIGN.md                                      # 0 errors · 0 warnings
+npx @google/design.md export --format css-tailwind DESIGN.md > theme.css  # Tailwind v4 @theme
+```
+
+Inside: the light-mode label palette (ink on warm paper, one signal accent) with the dark/HUD values in its Colors table, 11 type tokens on the two scales (display 80px+ / micro 7–11px), the 4px grid, radius ≤ 2px, and 26 component tokens (`spec-card`, `meta-strip`, `chip`, `button`, `data-table-*`, `status-dot`, …). The color tokens export as `--color-ink`, `--color-accent`, … — the same variable names the skill's CSS uses.
+
+`SKILL.md` stays the source of truth. `npm run check:design` lints `DESIGN.md` and fails if any token drifts from `SKILL.md`.
+
+<div align="center">
+  <img src="./examples/design-md-spec-card.png" alt="SpecCard built by an agent from DESIGN.md alone" width="560"/>
+  <br/><sub>Built by an agent from <code>DESIGN.md</code> alone, without <code>SKILL.md</code> (<a href="./examples/design-md-spec-card.html">source</a>).</sub>
+</div>
+
+---
+
 ## Usage
 
 After installing, prompt your agent naturally. The skill activates when it detects relevant intent:
@@ -112,6 +146,7 @@ your-project/
 │       └── micrographic.mdc   ← always-on (--rules flag)
 ├── .claude/
 │   └── skills/micrographic/SKILL.md
+├── DESIGN.md                  ← tokens + rules (--design-md flag)
 └── ...
 ```
 
@@ -149,8 +184,9 @@ Pull requests are welcome. Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for 
 ```bash
 git clone https://github.com/albegosu/micrographic-skill.git
 cd micrographic-skill
-# edit SKILL.md
+# edit SKILL.md (and DESIGN.md when tokens change)
 # test locally: node bin/install.mjs --dry-run && node bin/install.mjs --cursor
+npm install && npm run check:design   # DESIGN.md lint + drift guard against SKILL.md
 ```
 
 ---
